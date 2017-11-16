@@ -21,6 +21,8 @@ INSTALLED_APPS = [
 
 # Usage
 
+`django-bulmaforms` **does NOT** provide the bulma css library, you have to get and include it yourself somewhere in your markup. It only gives you template tags and layout elements to use them in your python code or template files.
+
 To simply display the form with bulma styles, you can use the standard templatetag `{% bulma_form your_form %}`
 
 ```html
