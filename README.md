@@ -7,7 +7,7 @@ Render [django](https://www.djangoproject.com/) [forms](https://docs.djangoproje
 
 # Installation
 
-*Coming soon with the publishing through PyPI*
+:soon: *Coming soon with the publishing through PyPI*
 
 Don't forget to put it into your `INSTALLED_APPS`:
 
@@ -87,3 +87,5 @@ class MyAwesomeBulmaForm(forms.Form):
 ```
 
 ![layout demo image](https://raw.githubusercontent.com/fechnert/django-bulmaforms/master/doc/img/layout.png)
+
+Have a bug, need help or noticed a typo? [:love_letter: Let me know!](https://github.com/fechnert/django-bulmaforms/issues/new)
