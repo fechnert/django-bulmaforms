@@ -1,6 +1,6 @@
 # django-bulmaforms [![python version](https://img.shields.io/badge/python-3.x-blue.svg)]() [![django version](https://img.shields.io/badge/Django-1.11.x-brightgreen.svg)]() [![bulma version](https://img.shields.io/badge/Bulma-0.5.1-yellow.svg)]()
 
-Render django forms in bulma styles
+Render [django](https://www.djangoproject.com/) [forms](https://docs.djangoproject.com/en/dev/topics/forms/) in [bulma](https://bulma.io/) styles
 
 ![Demo image](https://raw.githubusercontent.com/fechnert/django-bulmaforms/master/doc/img/demo.png)
 
