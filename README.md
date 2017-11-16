@@ -9,6 +9,16 @@ Render django forms in bulma styles
 
 *Coming soon with the publishing through PyPI*
 
+Don't forget to put it into your `INSTALLED_APPS`:
+
+```python
+INSTALLED_APPS = [
+    # [...] django.contrib stuff
+    'bulmaforms',
+    # [...] and now your apps
+]
+```
+
 # Usage
 
 To simply display the form with bulma styles, you can use the standard templatetag `{% bulma_form your_form %}`
