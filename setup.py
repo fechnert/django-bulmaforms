@@ -8,14 +8,15 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 setup(
     name='django-bulmaforms',
     version='0.1',
-    packages=find_packages(),
-    include_package_data=True,
-    license='MIT License',
     description='Render django forms in bulma style',
     long_description='Please read the README.md file!',
     url='https://github.com/fechnert/django-bulmaforms',
     author='Tim Fechner',
     author_email='tim.fechner@mailbox.org',
+    license='MIT License',
+    packages=find_packages(),
+    keywords='django-bulmaforms',
+    include_package_data=True,
     zip_safe=False,
     install_requires=[
         'Django>=1.11,<2.0'
