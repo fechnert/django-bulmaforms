@@ -7,7 +7,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='django-bulmaforms',
-    version='0.1',
+    version='0.1.0',
     description='Render django forms in bulma style',
     long_description='Please read the README.md file!',
     url='https://github.com/fechnert/django-bulmaforms',
