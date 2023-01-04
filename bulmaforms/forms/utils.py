@@ -9,7 +9,7 @@ def render_form_field(field):
     except AttributeError:
         input_type = None
 
-    if input_type in ['text', 'number', 'email', 'url', 'password']:
+    if input_type in ["text", "number", "email", "url", "password"]:
         # one of those text-like that support icons
         out = BulmaFieldMarkup.label(field.label, BulmaFieldMarkup.with_icons(field, field.as_widget()))
     elif input_type and getattr(BulmaFieldMarkup, input_type, None):
@@ -38,12 +38,12 @@ class BulmaFieldMarkup(object):
         return format_html('<div class="field">{}{}</div>', content, error_tags)
 
     @classmethod
-    def div_control(cls, content, control_class='control'):
+    def div_control(cls, content, control_class="control"):
         """Bulma requires to wrap input elements with an <div class="control">"""
         return format_html('<div class="{1}">{0}</div>', content, control_class)
 
     @classmethod
-    def label(cls, label, content='', css_class='label', for_id=''):
+    def label(cls, label, content="", css_class="label", for_id=""):
         """Define <label> seperately so it can be used elsewhere instead as a children of the <div class="field">"""
 
         if for_id:
@@ -60,28 +60,28 @@ class BulmaFieldMarkup(object):
         """
 
         icon_html = '<span class="icon is-small {side}"><i class="fa {icon}"></i></span>'
-        control_classes = ['control']
+        control_classes = ["control"]
         icon_left, icon_right = None, None
 
         # left icon is user customizable
-        icon_left = field.field.widget.attrs.get('icon', None)
+        icon_left = field.field.widget.attrs.get("icon", None)
 
         if icon_left:
-            control_classes.append('has-icons-left')
+            control_classes.append("has-icons-left")
 
         # right icon appears on field errors
         if field.errors:
             control_classes.append("has-icons-right")
-            icon_right = 'fa-warning'
+            icon_right = "fa-warning"
 
         content = format_html(
-            '{content}{i1}{i2}',
+            "{content}{i1}{i2}",
             content=content,
-            i1=format_html(icon_html, side='is-left', icon=icon_left) if icon_left else str(),
-            i2=format_html(icon_html, side='is-right', icon=icon_right) if icon_right else str(),
+            i1=format_html(icon_html, side="is-left", icon=icon_left) if icon_left else str(),
+            i2=format_html(icon_html, side="is-right", icon=icon_right) if icon_right else str(),
         )
 
-        return cls.div_control(content, control_class=' '.join(control_classes))
+        return cls.div_control(content, control_class=" ".join(control_classes))
 
     @classmethod
     def select(cls, field, content):
@@ -91,15 +91,14 @@ class BulmaFieldMarkup(object):
     @classmethod
     def checkbox(cls, field, content):
         """Checkboxes are super special, they wrap the input field with the label"""
-        return cls.div_control(cls.label(mark_safe(content + ' ' + str(field.label)), css_class='checkbox'))
+        return cls.div_control(cls.label(mark_safe(content + " " + str(field.label)), css_class="checkbox"))
 
     @classmethod
     def radio(cls, field, content):
-        choice_markup = ''
+        choice_markup = ""
         for choice in field:
             choice_markup += cls.label(
-                choice.tag(), choice.choice_label.title(),
-                for_id=choice.id_for_label, css_class='radio'
+                choice.tag(), choice.choice_label.title(), for_id=choice.id_for_label, css_class="radio"
             )
         return cls.div_control(mark_safe(choice_markup))
 
@@ -129,7 +128,7 @@ def render_form_errors(errors):
     if not errors:
         return format_html(str())
     args_generator = ([str(e)] for e in errors)
-    error_tags = format_html_join(str(), '<p>{}</p>', args_generator)
+    error_tags = format_html_join(str(), "<p>{}</p>", args_generator)
     return format_html(
         """
         <div class="message is-danger is-1">

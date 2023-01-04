@@ -5,7 +5,7 @@ from bulmaforms.forms.utils import render_form_field
 
 
 class AbstractElement(object):
-    markup = ''
+    markup = ""
 
     def __init__(self, *args, **kwargs):
         self.elements = args
@@ -15,7 +15,6 @@ class AbstractElement(object):
 
 
 class Field(AbstractElement):
-
     def __init__(self, field_name, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.field_name = field_name
@@ -43,7 +42,7 @@ class Card(AbstractElement):
     markup = '<div class="card">{}<div class="card-content">{}</div></div>'
     card_header_markup = '<header class="card-header"><p class="card-header-title">{}</p></header>'
 
-    def __init__(self, *args, title='', **kwargs):
+    def __init__(self, *args, title="", **kwargs):
         super().__init__(*args, **kwargs)
         self.title = title
 
@@ -57,7 +56,7 @@ class Card(AbstractElement):
 class Submit(AbstractElement):
     markup = '<div class="field"><div class="control"><button type="submit" class="button {}">{}</button></div></div>'
 
-    def __init__(self, label, css_class='', *args, **kwargs):
+    def __init__(self, label, css_class="", *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.label = label
         self.css_class = css_class

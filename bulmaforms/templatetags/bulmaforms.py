@@ -17,7 +17,7 @@ def bulma_form_fields(form):
         widget_classes = list()
 
         # not every form element in bulma has the 'input' css class, so we need to differ here
-        if getattr(field.field.widget, 'input_type', None) not in ['checkbox', 'radio']:
+        if getattr(field.field.widget, "input_type", None) not in ["checkbox", "radio"]:
             widget_classes.append("input")
 
         # highlight fields with errors
@@ -25,12 +25,12 @@ def bulma_form_fields(form):
             widget_classes.append("is-danger")
 
         # done
-        if field.field.widget.attrs.get('class'):
-            widget_classes.append(field.field.widget.attrs['class'])
+        if field.field.widget.attrs.get("class"):
+            widget_classes.append(field.field.widget.attrs["class"])
 
-        field.field.widget.attrs['class'] = " ".join(widget_classes)
+        field.field.widget.attrs["class"] = " ".join(widget_classes)
 
-    if getattr(form, 'layout', None):
+    if getattr(form, "layout", None):
         output = render_layout(form.layout, form)
     else:
         output = render_without_layout(form)
@@ -54,7 +54,7 @@ def bulma_form(context, form, submit_text="OK", submit_class="button is-outlined
 
 
 def render_layout(elements, form):
-    element_html = ''
+    element_html = ""
 
     for element in elements:
 
@@ -62,10 +62,10 @@ def render_layout(elements, form):
             # if the element itself is an field, give it the form field instance and render it
             element_html += element.render([field for field in form if field.name == element.field_name][0])
         else:
-            content = ''
+            content = ""
 
             # if the element has some child elements, render them
-            if getattr(element, 'elements', []):
+            if getattr(element, "elements", []):
                 content += render_layout(element.elements, form)
 
             # and now put the rendered things into the element's html markup
@@ -75,7 +75,7 @@ def render_layout(elements, form):
 
 
 def render_without_layout(form):
-    output = ''
+    output = ""
     for field in form:
         output += render_form_field(field)
     return mark_safe(output)

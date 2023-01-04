@@ -1,4 +1,4 @@
-# django-bulmaforms [![python version](https://img.shields.io/badge/python-3.x-blue.svg)]() [![django version](https://img.shields.io/badge/Django-1.11.x-brightgreen.svg)]() [![bulma version](https://img.shields.io/badge/Bulma-0.6.1-brightgreen.svg)]()
+# django-bulmaforms [![python version](https://img.shields.io/badge/python-3.x-blue.svg)]() [![django version](https://img.shields.io/badge/Django-1.11.x-brightgreen.svg)]() [![bulma version](https://img.shields.io/badge/Bulma-0.6.1-brightgreen.svg)]() [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 Render [django](https://www.djangoproject.com/) [forms](https://docs.djangoproject.com/en/dev/topics/forms/) in [bulma](https://bulma.io/) styles
 
