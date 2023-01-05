@@ -59,7 +59,7 @@ You can even specify an own layout to use Bulma elements within your form markup
 ```python
 # forms.py
 
-from hshassets.forms.elements import Card, Field, Submit
+from bulmaforms.forms.elements import Card, Field, Submit
 
 class MyAwesomeBulmaForm(forms.Form):
 
