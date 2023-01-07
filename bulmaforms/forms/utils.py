@@ -12,9 +12,11 @@ def render_form_field(field):
     if input_type in ["text", "number", "email", "url", "password"]:
         # one of those text-like that support icons
         out = BulmaFieldMarkup.label(field.label, BulmaFieldMarkup.with_icons(field, field.as_widget()))
+
     elif input_type and getattr(BulmaFieldMarkup, input_type, None):
         # something else explicitly defined
         out = getattr(BulmaFieldMarkup, input_type)(field, field.as_widget())
+
     else:
         # fallback default
         out = BulmaFieldMarkup.label(field.label, BulmaFieldMarkup.div_control(field.as_widget()))
@@ -22,10 +24,8 @@ def render_form_field(field):
     return BulmaFieldMarkup.div_field(field, out)
 
 
-class BulmaFieldMarkup(object):
-    """
-    HTML wrapper for input fields to add bulma styles.
-    """
+class BulmaFieldMarkup:
+    """HTML wrapper for input fields to add bulma styles."""
 
     def __init__(self):
         raise AssertionError("I'm a singleton. Boo.")
@@ -33,13 +33,16 @@ class BulmaFieldMarkup(object):
     @classmethod
     def div_field(cls, field, content):
         """Bulma requires to wrap every input field with this <div class="field">"""
+
         args_generator = ([str(e)] for e in field.errors)
         error_tags = format_html_join(str(), '<p class="help is-danger">{0}</p>', args_generator)
+
         return format_html('<div class="field">{}{}</div>', content, error_tags)
 
     @classmethod
     def div_control(cls, content, control_class="control"):
         """Bulma requires to wrap input elements with an <div class="control">"""
+
         return format_html('<div class="{1}">{0}</div>', content, control_class)
 
     @classmethod
@@ -54,8 +57,9 @@ class BulmaFieldMarkup(object):
 
     @classmethod
     def with_icons(cls, field, content):
-        """
-        Input field with icon in the left. Usage:
+        """Input field with icon in the left.
+
+        Usage:
         my_field = forms.CharField(widget=forms.TextInput(attrs={"icon": "fa-barcode"}))
         """
 
@@ -86,11 +90,13 @@ class BulmaFieldMarkup(object):
     @classmethod
     def select(cls, field, content):
         """Dropdowns have an extra wrapping <div class="select">"""
+
         return cls.label(field.label, cls.div_control(format_html('<div class="select">{}</div>', content)))
 
     @classmethod
     def checkbox(cls, field, content):
         """Checkboxes are super special, they wrap the input field with the label"""
+
         return cls.div_control(cls.label(mark_safe(content + " " + str(field.label)), css_class="checkbox"))
 
     @classmethod
@@ -100,17 +106,20 @@ class BulmaFieldMarkup(object):
             choice_markup += cls.label(
                 choice.tag(), choice.choice_label.title(), for_id=choice.id_for_label, css_class="radio"
             )
+
         return cls.div_control(mark_safe(choice_markup))
 
     @classmethod
     def hidden(cls, field, content):
         """Hidden fields with labels are silly"""
+
         return cls.div_control(content)
 
 
 def render_form_generics(context, rendered_fields, rendered_errors, submit_text, submit_class, submit_only_once=True):
     csrf_field = defaulttags.CsrfTokenNode().render(context)
     submit_only_once = "true" if submit_only_once else "false"
+
     return format_html(
         """
         <form method="post" data-submit-only-once="{submit_only_once}">
@@ -127,8 +136,10 @@ def render_form_generics(context, rendered_fields, rendered_errors, submit_text,
 def render_form_errors(errors):
     if not errors:
         return format_html(str())
+
     args_generator = ([str(e)] for e in errors)
     error_tags = format_html_join(str(), "<p>{}</p>", args_generator)
+
     return format_html(
         """
         <div class="message is-danger is-1">

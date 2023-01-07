@@ -4,7 +4,7 @@ from django.utils.html import format_html
 from bulmaforms.forms.utils import render_form_field
 
 
-class AbstractElement(object):
+class AbstractElement:
     markup = ""
 
     def __init__(self, *args, **kwargs):
